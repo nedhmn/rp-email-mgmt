@@ -4,7 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "google-api-python-client>=2.160.0",
+    "google-auth>=2.38.0",
+    "jinja2>=3.1.5",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+]
 
 [dependency-groups]
 dev = [
@@ -14,3 +20,13 @@ dev = [
 
 [tool.uv]
 cache-dir=".cache"
+
+[tool.mypy]
+python_version = "3.12"
+files = ["rpemail/**/*.py"]
+plugins = ["pydantic.mypy"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["googleapiclient.*"]
+ignore_missing_imports = true

@@ -1,0 +1,22 @@
+from pathlib import Path
+
+from jinja2 import Environment, FileSystemLoader
+
+from rpemail.config import settings
+from rpemail.google_api import UserInfo
+
+TEMPLATES_DIR = Path(__file__).parent / "templates"
+
+
+def render_signature(user: UserInfo) -> str:
+    env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True)
+    template = env.get_template(settings.template_name)
+
+    return template.render(
+        name=user.name,
+        title=user.title,
+        email=user.email,
+        phone=user.phone,
+        website=settings.company_website,
+        logo_url=settings.logo_url,
+    )
