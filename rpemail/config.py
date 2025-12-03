@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     admin_email: str = Field(...)
 
     company_website: str = Field(default="https://returnpolicystays.com")
-    logo_url: str = Field(default="https://imgur.com/a/GC86Dxj.png")
+    logo_url: str = Field(default="https://i.imgur.com/8cFKlCD.png")
 
     # To update
     template_name: str = Field(default="signature_v1.html")

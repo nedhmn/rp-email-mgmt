@@ -4,6 +4,7 @@ from jinja2 import Environment, FileSystemLoader
 
 from rpemail.config import settings
 from rpemail.google_api import UserInfo
+from rpemail.utils import format_phone
 
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 
@@ -16,7 +17,7 @@ def render_signature(user: UserInfo) -> str:
         name=user.name,
         title=user.title,
         email=user.email,
-        phone=user.phone,
+        phone=format_phone(user.phone),
         website=settings.company_website,
         logo_url=settings.logo_url,
     )
