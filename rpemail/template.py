@@ -13,11 +13,15 @@ def render_signature(user: UserInfo) -> str:
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True)
     template = env.get_template(settings.template_name)
 
+    website = settings.company_website
+    website_display = website.replace("https://", "www.").replace("http://", "www.")
+
     return template.render(
         name=user.name,
         title=user.title,
         email=user.email,
         phone=format_phone(user.phone),
-        website=settings.company_website,
+        website=website,
+        website_display=website_display,
         logo_url=settings.logo_url,
     )
