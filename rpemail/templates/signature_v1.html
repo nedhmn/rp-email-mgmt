@@ -6,7 +6,7 @@
     </td>
     <td style="vertical-align: top;">
       <strong style="font-size: 16px; color: #000000;">{{ name }}</strong><br>
-      <span style="color: #666666;">{{ title }}</span><br>
+      {% if title %}<span style="color: #666666;">{{ title }}</span><br>{% endif %}
       <hr style="border: none; border-top: 1px solid #cccccc; margin: 8px 0;">
       <span style="color: #999999;">e.</span> <a href="mailto:{{ email }}"
         style="color: #0066cc; text-decoration: none;">{{ email }}</a><br>
